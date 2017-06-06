@@ -3,7 +3,7 @@
 <?php 
 if (isset($_POST["upload"])) {
 	require_once "classes/Uploader.php";
-	$dir = $_SERVER["DOCUMENT_ROOT"] . "/uploads";
+	$dir = $_SERVER["DOCUMENT_ROOT"] . "/phpsites/flowers/uploads";
 	$worker = new Uploader($dir);
 	$worker->upload();
 	$errs = $worker->getErrors();
@@ -14,7 +14,7 @@ if (isset($_POST["upload"])) {
 <div class="gallery">
 	<div class="errors">
 		<?php 
-		if ($errs) {
+		if (isset($errs)) {
 			echo "<ul>";
 			foreach ($errs as $err) {
 				echo "<li>$err</li>";
@@ -33,14 +33,14 @@ if (isset($_POST["upload"])) {
 	</form>
 
 <?php 
-$dir = $_SERVER["DOCUMENT_ROOT"] . "/uploads";
+$dir = $_SERVER["DOCUMENT_ROOT"] . "/phpsites/flowers/uploads";
 $images = scandir($dir);
 echo "<div class='images'>";
 foreach ($images as $image) {
 	if ($image != "." && $image != "..") {
 		echo "<figure>";
-		echo "<img src='uploads/$image'>";
-		echo "<br><a href='uploads/$image' download>Download image</a>";
+		echo "<img src='/phpsites/flowers/uploads/$image'>";
+		echo "<br><a href='/phpsites/flowers/uploads/$image' download>Download image</a>";
 		echo "</figure>";
 	}
 }

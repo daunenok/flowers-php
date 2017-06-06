@@ -7,6 +7,9 @@ $missing = [];
 $interests = [];
 $characteristics = [];
 $accept = "";
+$comments = "";
+$name = "";
+$email = "";
 
 if (isset($_POST["submit"])) {
 	$suspect = false;
@@ -87,13 +90,13 @@ function suspected($str) {
 	<p>Nullam a ligula varius, sollicitudin velit quis, mattis nunc. Nam consequat bibendum libero vel venenatis. Cras rhoncus nisi condimentum elit convallis, in vulputate erat interdum. Phasellus dignissim egestas sagittis.</p>
 
 	<form method="post">
-		<?php if ($suspect || $error["mail"]) { ?>
+		<?php if (isset($suspect) || isset($error["mail"])) { ?>
 		<p>Sorry, your mail could not be sent.</p>
 		<?php } ?>
 
 		<label for="name">
 			Name:
-			<?php if(in_array("name", $missing)) { ?>
+			<?php if(isset($missing) && in_array("name", $missing)) { ?>
 			<span>Please enter your name</span>
 			<?php } ?>
 		</label>
@@ -101,7 +104,7 @@ function suspected($str) {
 
 		<label for="email">
 			Email:
-			<?php if($error["email"]) { ?>
+			<?php if(isset($error["email"])) { ?>
 			<span>Invalid email</span>
 			<?php } ?>
 		</label>
@@ -132,7 +135,7 @@ function suspected($str) {
 		<div class="input-title">
 			Interests in Flowers
 			<?php 
-			if(in_array("interests", $missing) || $error["interests"]) { 
+			if(in_array("interests", $missing) || isset($error["interests"])) { 
 				echo "<span>Please check $interestsMin or more interests</span>";
 			} 
 			?>
@@ -198,7 +201,7 @@ function suspected($str) {
 		<label for="characteristics">
 			What characteristics do you associate with flowers?
 			<?php 
-			if(in_array("characteristics", $missing) || $error["characteristics"]) { 
+			if(in_array("characteristics", $missing) || isset($error["characteristics"])) { 
 				echo "<span>Please check $characteristicsMin or more characteristics</span>";
 			} 
 			?>

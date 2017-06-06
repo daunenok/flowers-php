@@ -10,7 +10,7 @@ $rss5 = new LimitIterator($rss->channel->item, 0, 3);
 <div class="articles">
 
 <?php 
-$path = $_SERVER["DOCUMENT_ROOT"] . "/articles/article1.txt";
+$path = $_SERVER["DOCUMENT_ROOT"] . "/phpsites/flowers/articles/article1.txt";
 $file = file($path);
 echo "<h2>" . $file[0] . "</h2>";
 echo "<div class='article-date'>" . $file[1] . "</div>";
